@@ -222,23 +222,27 @@ static const struct qcom_icc_desc sm7150_aggre2_noc = {
 	.num_bcms = ARRAY_SIZE(aggre2_noc_bcms),
 };
 
-static struct qcom_icc_bcm * const camnoc_virt_bcms[] = {
+static struct qcom_icc_bcm * const clk_virt_bcms[] = {
+	&bcm_acv,
+	&bcm_mc0,
 	&bcm_mm1,
 };
 
-static struct qcom_icc_node * const camnoc_virt_nodes[] = {
+static struct qcom_icc_node * const clk_virt_nodes[] = {
 	[MASTER_CAMNOC_HF0_UNCOMP] = &qxm_camnoc_hf0_uncomp,
 	[MASTER_CAMNOC_RT_UNCOMP] = &qxm_camnoc_rt_uncomp,
 	[MASTER_CAMNOC_SF_UNCOMP] = &qxm_camnoc_sf_uncomp,
 	[MASTER_CAMNOC_NRT_UNCOMP] = &qxm_camnoc_nrt_uncomp,
+	[MASTER_LLCC] = &llcc_mc,
 	[SLAVE_CAMNOC_UNCOMP] = &qns_camnoc_uncomp,
+	[SLAVE_EBI_CH0] = &ebi,
 };
 
-static const struct qcom_icc_desc sm7150_camnoc_virt = {
-	.nodes = camnoc_virt_nodes,
-	.num_nodes = ARRAY_SIZE(camnoc_virt_nodes),
-	.bcms = camnoc_virt_bcms,
-	.num_bcms = ARRAY_SIZE(camnoc_virt_bcms),
+static const struct qcom_icc_desc sm7150_clk_virt = {
+	.nodes = clk_virt_nodes,
+	.num_nodes = ARRAY_SIZE(clk_virt_nodes),
+	.bcms = clk_virt_bcms,
+	.num_bcms = ARRAY_SIZE(clk_virt_bcms),
 };
 
 static struct qcom_icc_bcm * const compute_noc_bcms[] = {
@@ -370,36 +374,6 @@ static const struct qcom_icc_desc sm7150_gem_noc = {
 	.num_bcms = ARRAY_SIZE(gem_noc_bcms),
 };
 
-static struct qcom_icc_bcm * const ipa_virt_bcms[] = {
-};
-
-static struct qcom_icc_node * const ipa_virt_nodes[] = {
-};
-
-static const struct qcom_icc_desc sm7150_ipa_virt = {
-	.nodes = ipa_virt_nodes,
-	.num_nodes = ARRAY_SIZE(ipa_virt_nodes),
-	.bcms = ipa_virt_bcms,
-	.num_bcms = ARRAY_SIZE(ipa_virt_bcms),
-};
-
-static struct qcom_icc_bcm * const mc_virt_bcms[] = {
-	&bcm_acv,
-	&bcm_mc0,
-};
-
-static struct qcom_icc_node * const mc_virt_nodes[] = {
-	[MASTER_LLCC] = &llcc_mc,
-	[SLAVE_EBI_CH0] = &ebi,
-};
-
-static const struct qcom_icc_desc sm7150_mc_virt = {
-	.nodes = mc_virt_nodes,
-	.num_nodes = ARRAY_SIZE(mc_virt_nodes),
-	.bcms = mc_virt_bcms,
-	.num_bcms = ARRAY_SIZE(mc_virt_bcms),
-};
-
 static struct qcom_icc_bcm * const mmss_noc_bcms[] = {
 	&bcm_mm0,
 	&bcm_mm1,
@@ -472,8 +446,8 @@ static const struct of_device_id qnoc_of_match[] = {
 	  .data = &sm7150_aggre1_noc},
 	{ .compatible = "qcom,sm7150-aggre2-noc",
 	  .data = &sm7150_aggre2_noc},
-	{ .compatible = "qcom,sm7150-camnoc-virt",
-	  .data = &sm7150_camnoc_virt},
+	{ .compatible = "qcom,sm7150-clk-virt",
+	  .data = &sm7150_clk_virt},
 	{ .compatible = "qcom,sm7150-compute-noc",
 	  .data = &sm7150_compute_noc},
 	{ .compatible = "qcom,sm7150-config-noc",
@@ -482,10 +456,6 @@ static const struct of_device_id qnoc_of_match[] = {
 	  .data = &sm7150_dc_noc},
 	{ .compatible = "qcom,sm7150-gem-noc",
 	  .data = &sm7150_gem_noc},
-	{ .compatible = "qcom,sm7150-ipa-virt",
-	  .data = &sm7150_ipa_virt},
-	{ .compatible = "qcom,sm7150-mc-virt",
-	  .data = &sm7150_mc_virt},
 	{ .compatible = "qcom,sm7150-mmss-noc",
 	  .data = &sm7150_mmss_noc},
 	{ .compatible = "qcom,sm7150-system-noc",
