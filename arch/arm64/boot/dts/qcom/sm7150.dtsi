@@ -3068,13 +3068,6 @@
 			};
 		};
 
-		mc_virt: interconnect@1380000 {
-			compatible = "qcom,sm7150-mc-virt";
-			reg = <0 0x01380000 0 0x40000>;
-			#interconnect-cells = <2>;
-			qcom,bcm-voters = <&apps_bcm_voter>;
-		};
-
 		config_noc: interconnect@1500000 {
 			compatible = "qcom,sm7150-config-noc";
 			reg = <0 0x01500000 0 0x28000>;
@@ -3087,12 +3080,6 @@
 			reg = <0 0x01620000 0 0x18080>;
 			#interconnect-cells = <2>;
 			qcom,bcm-voters = <&apps_bcm_voter>;
-
-			/*ipa_virt: interconnect-ipa {
-				compatible = "qcom,sm7150-ipa-virt";
-				#interconnect-cells = <2>;
-				qcom,bcm-voters = <&apps_bcm_voter>;
-			};*/
 
 			clk_virt: interconnect-clk-virt {
 				compatible = "qcom,sm7150-clk-virt";
