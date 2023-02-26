@@ -210,7 +210,7 @@ static struct clk_alpha_pll cam_cc_pll0 = {
 			.name = "cam_cc_pll0",
 			.parent_names = (const char *[]){ "bi_tcxo" },
 			.num_parents = 1,
-			.ops = &clk_fabia_pll_ops,
+			.ops = &clk_alpha_pll_fabia_ops,
 		},
 	},
 };
@@ -255,7 +255,7 @@ static struct clk_alpha_pll cam_cc_pll1 = {
 			.name = "cam_cc_pll1",
 			.parent_names = (const char *[]){ "bi_tcxo" },
 			.num_parents = 1,
-			.ops = &clk_fabia_pll_ops,
+			.ops = &clk_alpha_pll_fabia_ops,
 		},
 	},
 };
@@ -291,7 +291,7 @@ static struct clk_alpha_pll cam_cc_pll2 = {
 			.name = "cam_cc_pll2",
 			.parent_names = (const char *[]){ "bi_tcxo" },
 			.num_parents = 1,
-			.ops = &clk_agera_pll_ops,
+			.ops = &clk_alpha_pll_agera_ops,
 		},
 	},
 };
@@ -351,7 +351,7 @@ static struct clk_alpha_pll cam_cc_pll3 = {
 			.name = "cam_cc_pll3",
 			.parent_names = (const char *[]){ "bi_tcxo" },
 			.num_parents = 1,
-			.ops = &clk_fabia_pll_ops,
+			.ops = &clk_alpha_pll_fabia_ops,
 		},
 	},
 };
@@ -377,7 +377,7 @@ static struct clk_alpha_pll cam_cc_pll4 = {
 			.name = "cam_cc_pll4",
 			.parent_names = (const char *[]){ "bi_tcxo" },
 			.num_parents = 1,
-			.ops = &clk_fabia_pll_ops,
+			.ops = &clk_alpha_pll_fabia_ops,
 		},
 	},
 };
