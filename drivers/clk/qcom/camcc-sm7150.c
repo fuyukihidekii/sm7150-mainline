@@ -23,7 +23,7 @@
 #include <linux/regmap.h>
 #include <linux/reset-controller.h>
 
-#include <dt-bindings/clock/qcom,camcc-sdmmagpie.h>
+#include <dt-bindings/clock/qcom,camcc-sm7150.h>
 
 #include "clk-alpha-pll.h"
 #include "clk-branch.h"
@@ -31,7 +31,7 @@
 #include "clk-regmap.h"
 #include "common.h"
 #include "reset.h"
-#include "vdd-level-sdmmagpie.h"
+#include "vdd-level-sm7150.h"
 
 #define F(f, s, h, m, n) { (f), (s), (2 * (h) - 1), (m), (n) }
 
@@ -2073,7 +2073,7 @@ static struct clk_branch cam_cc_sleep_clk = {
 	},
 };
 
-struct clk_hw *cam_cc_sdmmagpie_hws[] = {
+struct clk_hw *cam_cc_sm7150_hws[] = {
 	[CAM_CC_PLL0_OUT_EVEN] = &cam_cc_pll0_out_even.hw,
 	[CAM_CC_PLL0_OUT_ODD] = &cam_cc_pll0_out_odd.hw,
 	[CAM_CC_PLL1_OUT_EVEN] = &cam_cc_pll1_out_even.hw,
@@ -2082,7 +2082,7 @@ struct clk_hw *cam_cc_sdmmagpie_hws[] = {
 	[CAM_CC_PLL4_OUT_EVEN] = &cam_cc_pll4_out_even.hw,
 };
 
-static struct clk_regmap *cam_cc_sdmmagpie_clocks[] = {
+static struct clk_regmap *cam_cc_sm7150_clocks[] = {
 	[CAM_CC_BPS_AHB_CLK] = &cam_cc_bps_ahb_clk.clkr,
 	[CAM_CC_BPS_AREG_CLK] = &cam_cc_bps_areg_clk.clkr,
 	[CAM_CC_BPS_AXI_CLK] = &cam_cc_bps_axi_clk.clkr,
@@ -2171,7 +2171,7 @@ static struct clk_regmap *cam_cc_sdmmagpie_clocks[] = {
 	[CAM_CC_XO_CLK_SRC] = &cam_cc_xo_clk_src.clkr,
 };
 
-static const struct regmap_config cam_cc_sdmmagpie_regmap_config = {
+static const struct regmap_config cam_cc_sm7150_regmap_config = {
 	.reg_bits	= 32,
 	.reg_stride	= 4,
 	.val_bits	= 32,
@@ -2179,21 +2179,21 @@ static const struct regmap_config cam_cc_sdmmagpie_regmap_config = {
 	.fast_io	= true,
 };
 
-static const struct qcom_cc_desc cam_cc_sdmmagpie_desc = {
-	.config = &cam_cc_sdmmagpie_regmap_config,
-	.clks = cam_cc_sdmmagpie_clocks,
-	.num_clks = ARRAY_SIZE(cam_cc_sdmmagpie_clocks),
-	.hwclks = cam_cc_sdmmagpie_hws,
-	.num_hwclks = ARRAY_SIZE(cam_cc_sdmmagpie_hws),
+static const struct qcom_cc_desc cam_cc_sm7150_desc = {
+	.config = &cam_cc_sm7150_regmap_config,
+	.clks = cam_cc_sm7150_clocks,
+	.num_clks = ARRAY_SIZE(cam_cc_sm7150_clocks),
+	.hwclks = cam_cc_sm7150_hws,
+	.num_hwclks = ARRAY_SIZE(cam_cc_sm7150_hws),
 };
 
-static const struct of_device_id cam_cc_sdmmagpie_match_table[] = {
-	{ .compatible = "qcom,camcc-sdmmagpie" },
+static const struct of_device_id cam_cc_sm7150_match_table[] = {
+	{ .compatible = "qcom,camcc-sm7150" },
 	{ }
 };
-MODULE_DEVICE_TABLE(of, cam_cc_sdmmagpie_match_table);
+MODULE_DEVICE_TABLE(of, cam_cc_sm7150_match_table);
 
-static int cam_cc_sdmmagpie_probe(struct platform_device *pdev)
+static int cam_cc_sm7150_probe(struct platform_device *pdev)
 {
 	struct regmap *regmap;
 	int ret;
@@ -2214,7 +2214,7 @@ static int cam_cc_sdmmagpie_probe(struct platform_device *pdev)
 		return PTR_ERR(vdd_mx.regulator[0]);
 	}
 
-	regmap = qcom_cc_map(pdev, &cam_cc_sdmmagpie_desc);
+	regmap = qcom_cc_map(pdev, &cam_cc_sm7150_desc);
 	if (IS_ERR(regmap)) {
 		pr_err("Failed to map the cam_cc registers\n");
 		return PTR_ERR(regmap);
@@ -2226,7 +2226,7 @@ static int cam_cc_sdmmagpie_probe(struct platform_device *pdev)
 	clk_fabia_pll_configure(&cam_cc_pll3, regmap, &cam_cc_pll3_config);
 	clk_fabia_pll_configure(&cam_cc_pll4, regmap, &cam_cc_pll3_config);
 
-	ret = qcom_cc_really_probe(pdev, &cam_cc_sdmmagpie_desc, regmap);
+	ret = qcom_cc_really_probe(pdev, &cam_cc_sm7150_desc, regmap);
 	if (ret) {
 		dev_err(&pdev->dev, "Failed to register Camera CC clocks\n");
 		return ret;
@@ -2236,26 +2236,26 @@ static int cam_cc_sdmmagpie_probe(struct platform_device *pdev)
 	return ret;
 }
 
-static struct platform_driver cam_cc_sdmmagpie_driver = {
-	.probe = cam_cc_sdmmagpie_probe,
+static struct platform_driver cam_cc_sm7150_driver = {
+	.probe = cam_cc_sm7150_probe,
 	.driver = {
-		.name = "cam_cc-sdmmagpie",
-		.of_match_table = cam_cc_sdmmagpie_match_table,
+		.name = "cam_cc-sm7150",
+		.of_match_table = cam_cc_sm7150_match_table,
 	},
 };
 
-static int __init cam_cc_sdmmagpie_init(void)
+static int __init cam_cc_sm7150_init(void)
 {
-	return platform_driver_register(&cam_cc_sdmmagpie_driver);
+	return platform_driver_register(&cam_cc_sm7150_driver);
 }
-subsys_initcall(cam_cc_sdmmagpie_init);
+subsys_initcall(cam_cc_sm7150_init);
 
-static void __exit cam_cc_sdmmagpie_exit(void)
+static void __exit cam_cc_sm7150_exit(void)
 {
-	platform_driver_unregister(&cam_cc_sdmmagpie_driver);
+	platform_driver_unregister(&cam_cc_sm7150_driver);
 }
-module_exit(cam_cc_sdmmagpie_exit);
+module_exit(cam_cc_sm7150_exit);
 
-MODULE_DESCRIPTION("QTI CAM_CC sdmmagpie Driver");
+MODULE_DESCRIPTION("QTI CAM_CC sm7150 Driver");
 MODULE_LICENSE("GPL v2");
-MODULE_ALIAS("platform:cam_cc-sdmmagpie");
+MODULE_ALIAS("platform:cam_cc-sm7150");
