@@ -287,13 +287,13 @@ static const struct parent_map cam_cc_parent_map_0[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_0[] = {
-	"bi_tcxo",
-	"cam_cc_pll0",
-	"cam_cc_pll0_out_even",
-	"cam_cc_pll0_out_odd",
-	"cam_cc_pll2_out_main",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_0[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll0.clkr.hw },
+	{ .hw = &cam_cc_pll0_out_even.hw },
+	{ .hw = &cam_cc_pll0_out_odd.hw },
+	{ .hw = &cam_cc_pll2_out_main.clkr.hw },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_1[] = {
@@ -306,14 +306,13 @@ static const struct parent_map cam_cc_parent_map_1[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_1[] = {
-	"bi_tcxo",
-	"cam_cc_pll0",
-	"cam_cc_pll0_out_even",
-	"cam_cc_pll0_out_odd",
-	"cam_cc_pll1_out_even",
-	"cam_cc_pll2_out_early",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_1[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll0.clkr.hw },
+	{ .hw = &cam_cc_pll0_out_even.hw },
+	{ .hw = &cam_cc_pll0_out_odd.hw },
+	{ .hw = &cam_cc_pll1_out_even.hw },
+	{ .hw = &cam_cc_pll2_out_early.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_2[] = {
@@ -322,10 +321,10 @@ static const struct parent_map cam_cc_parent_map_2[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_2[] = {
-	"bi_tcxo",
-	"cam_cc_pll2_out_aux",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_2[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll2_out_aux.clkr.hw },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_3[] = {
@@ -338,14 +337,13 @@ static const struct parent_map cam_cc_parent_map_3[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_3[] = {
-	"bi_tcxo",
-	"cam_cc_pll0",
-	"cam_cc_pll0_out_even",
-	"cam_cc_pll0_out_odd",
-	"cam_cc_pll2_out_early",
-	"cam_cc_pll4_out_even",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_3[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll0.clkr.hw },
+	{ .hw = &cam_cc_pll0_out_even.hw },
+	{ .hw = &cam_cc_pll0_out_odd.hw },
+	{ .hw = &cam_cc_pll2_out_early.hw },
+	{ .hw = &cam_cc_pll4_out_even.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_4[] = {
@@ -354,10 +352,10 @@ static const struct parent_map cam_cc_parent_map_4[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_4[] = {
-	"bi_tcxo",
-	"cam_cc_pll3_out_even",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_4[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll3_out_even.hw },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_5[] = {
@@ -366,10 +364,10 @@ static const struct parent_map cam_cc_parent_map_5[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_5[] = {
-	"bi_tcxo",
-	"cam_cc_pll4_out_even",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_5[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll4_out_even.hw },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_6[] = {
@@ -378,10 +376,10 @@ static const struct parent_map cam_cc_parent_map_6[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_6[] = {
-	"bi_tcxo",
-	"cam_cc_pll1_out_even",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_6[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll1_out_even.hw },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_7[] = {
@@ -389,9 +387,9 @@ static const struct parent_map cam_cc_parent_map_7[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_7[] = {
-	"chip_sleep_clk",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_7[] = {
+	{ .fw_name = "chip_sleep_clk", .name = "chip_sleep_clk" },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_8[] = {
@@ -400,10 +398,10 @@ static const struct parent_map cam_cc_parent_map_8[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_8[] = {
-	"bi_tcxo",
-	"cam_cc_pll0_out_odd",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_8[] = {
+	{ .fw_name = "bi_tcxo", .name = "bi_tcxo" },
+	{ .hw = &cam_cc_pll0_out_odd.hw },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_9[] = {
@@ -411,9 +409,9 @@ static const struct parent_map cam_cc_parent_map_9[] = {
 	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
-static const char * const cam_cc_parent_names_9[] = {
-	"bi_tcxo_ao",
-	"core_bi_pll_test_se",
+static const struct clk_parent_data cam_cc_parent_data_9[] = {
+	{ .fw_name = "bi_tcxo_ao", .name = "bi_tcxo_ao" },
+	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct freq_tbl ftbl_cam_cc_bps_clk_src[] = {
@@ -1983,10 +1981,10 @@ static const struct regmap_config cam_cc_sm7150_regmap_config = {
 
 static const struct qcom_cc_desc cam_cc_sm7150_desc = {
 	.config = &cam_cc_sm7150_regmap_config,
-	.clks = cam_cc_sm7150_clocks,
-	.num_clks = ARRAY_SIZE(cam_cc_sm7150_clocks),
 	.clk_hws = cam_cc_sm7150_hws,
 	.num_clk_hws = ARRAY_SIZE(cam_cc_sm7150_hws),
+	.clks = cam_cc_sm7150_clocks,
+	.num_clks = ARRAY_SIZE(cam_cc_sm7150_clocks),
 };
 
 static const struct of_device_id cam_cc_sm7150_match_table[] = {
