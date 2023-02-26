@@ -46,144 +46,6 @@ enum {
 	P_CORE_BI_PLL_TEST_SE,
 };
 
-static const struct parent_map cam_cc_parent_map_0[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CAM_CC_PLL0_OUT_MAIN, 1 },
-	{ P_CAM_CC_PLL0_OUT_EVEN, 2 },
-	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
-	{ P_CAM_CC_PLL2_OUT_MAIN, 5 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_0[] = {
-	"bi_tcxo",
-	"cam_cc_pll0",
-	"cam_cc_pll0_out_even",
-	"cam_cc_pll0_out_odd",
-	"cam_cc_pll2_out_main",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_1[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CAM_CC_PLL0_OUT_MAIN, 1 },
-	{ P_CAM_CC_PLL0_OUT_EVEN, 2 },
-	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
-	{ P_CAM_CC_PLL1_OUT_EVEN, 4 },
-	{ P_CAM_CC_PLL2_OUT_EARLY, 5 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_1[] = {
-	"bi_tcxo",
-	"cam_cc_pll0",
-	"cam_cc_pll0_out_even",
-	"cam_cc_pll0_out_odd",
-	"cam_cc_pll1_out_even",
-	"cam_cc_pll2_out_early",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_2[] = {
-	{ P_BI_TCXO_MX, 0 },
-	{ P_CAM_CC_PLL2_OUT_AUX, 5 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_2[] = {
-	"bi_tcxo",
-	"cam_cc_pll2_out_aux",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_3[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CAM_CC_PLL0_OUT_MAIN, 1 },
-	{ P_CAM_CC_PLL0_OUT_EVEN, 2 },
-	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
-	{ P_CAM_CC_PLL2_OUT_EARLY, 5 },
-	{ P_CAM_CC_PLL4_OUT_EVEN, 6 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_3[] = {
-	"bi_tcxo",
-	"cam_cc_pll0",
-	"cam_cc_pll0_out_even",
-	"cam_cc_pll0_out_odd",
-	"cam_cc_pll2_out_early",
-	"cam_cc_pll4_out_even",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_4[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CAM_CC_PLL3_OUT_EVEN, 6 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_4[] = {
-	"bi_tcxo",
-	"cam_cc_pll3_out_even",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_5[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CAM_CC_PLL4_OUT_EVEN, 6 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_5[] = {
-	"bi_tcxo",
-	"cam_cc_pll4_out_even",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_6[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CAM_CC_PLL1_OUT_EVEN, 4 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_6[] = {
-	"bi_tcxo",
-	"cam_cc_pll1_out_even",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_7[] = {
-	{ P_CHIP_SLEEP_CLK, 0 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_7[] = {
-	"chip_sleep_clk",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_8[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_8[] = {
-	"bi_tcxo",
-	"cam_cc_pll0_out_odd",
-	"core_bi_pll_test_se",
-};
-
-static const struct parent_map cam_cc_parent_map_9[] = {
-	{ P_BI_TCXO, 0 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
-};
-
-static const char * const cam_cc_parent_names_9[] = {
-	"bi_tcxo_ao",
-	"core_bi_pll_test_se",
-};
-
 static struct pll_vco fabia_vco[] = {
 	{ 249600000, 2000000000, 0 },
 };
@@ -414,6 +276,144 @@ static struct clk_fixed_factor cam_cc_pll4_out_even = {
 		.flags = CLK_SET_RATE_PARENT,
 		.ops = &clk_fixed_factor_ops,
 	},
+};
+
+static const struct parent_map cam_cc_parent_map_0[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CAM_CC_PLL0_OUT_MAIN, 1 },
+	{ P_CAM_CC_PLL0_OUT_EVEN, 2 },
+	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
+	{ P_CAM_CC_PLL2_OUT_MAIN, 5 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_0[] = {
+	"bi_tcxo",
+	"cam_cc_pll0",
+	"cam_cc_pll0_out_even",
+	"cam_cc_pll0_out_odd",
+	"cam_cc_pll2_out_main",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_1[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CAM_CC_PLL0_OUT_MAIN, 1 },
+	{ P_CAM_CC_PLL0_OUT_EVEN, 2 },
+	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
+	{ P_CAM_CC_PLL1_OUT_EVEN, 4 },
+	{ P_CAM_CC_PLL2_OUT_EARLY, 5 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_1[] = {
+	"bi_tcxo",
+	"cam_cc_pll0",
+	"cam_cc_pll0_out_even",
+	"cam_cc_pll0_out_odd",
+	"cam_cc_pll1_out_even",
+	"cam_cc_pll2_out_early",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_2[] = {
+	{ P_BI_TCXO_MX, 0 },
+	{ P_CAM_CC_PLL2_OUT_AUX, 5 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_2[] = {
+	"bi_tcxo",
+	"cam_cc_pll2_out_aux",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_3[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CAM_CC_PLL0_OUT_MAIN, 1 },
+	{ P_CAM_CC_PLL0_OUT_EVEN, 2 },
+	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
+	{ P_CAM_CC_PLL2_OUT_EARLY, 5 },
+	{ P_CAM_CC_PLL4_OUT_EVEN, 6 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_3[] = {
+	"bi_tcxo",
+	"cam_cc_pll0",
+	"cam_cc_pll0_out_even",
+	"cam_cc_pll0_out_odd",
+	"cam_cc_pll2_out_early",
+	"cam_cc_pll4_out_even",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_4[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CAM_CC_PLL3_OUT_EVEN, 6 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_4[] = {
+	"bi_tcxo",
+	"cam_cc_pll3_out_even",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_5[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CAM_CC_PLL4_OUT_EVEN, 6 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_5[] = {
+	"bi_tcxo",
+	"cam_cc_pll4_out_even",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_6[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CAM_CC_PLL1_OUT_EVEN, 4 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_6[] = {
+	"bi_tcxo",
+	"cam_cc_pll1_out_even",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_7[] = {
+	{ P_CHIP_SLEEP_CLK, 0 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_7[] = {
+	"chip_sleep_clk",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_8[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_8[] = {
+	"bi_tcxo",
+	"cam_cc_pll0_out_odd",
+	"core_bi_pll_test_se",
+};
+
+static const struct parent_map cam_cc_parent_map_9[] = {
+	{ P_BI_TCXO, 0 },
+	{ P_CORE_BI_PLL_TEST_SE, 7 },
+};
+
+static const char * const cam_cc_parent_names_9[] = {
+	"bi_tcxo_ao",
+	"core_bi_pll_test_se",
 };
 
 static const struct freq_tbl ftbl_cam_cc_bps_clk_src[] = {
