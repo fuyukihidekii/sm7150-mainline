@@ -11,8 +11,6 @@
  * GNU General Public License for more details.
  */
 
-#define pr_fmt(fmt) "clk: %s: " fmt, __func__
-
 #include <linux/kernel.h>
 #include <linux/err.h>
 #include <linux/module.h>
@@ -31,8 +29,6 @@
 #include "clk-regmap.h"
 #include "common.h"
 #include "reset.h"
-
-#define F(f, s, h, m, n) { (f), (s), (2 * (h) - 1), (m), (n) }
 
 enum {
 	P_BI_TCXO,
