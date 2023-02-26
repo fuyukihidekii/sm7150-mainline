@@ -50,7 +50,6 @@ enum {
 	P_CAM_CC_PLL3_OUT_EVEN,
 	P_CAM_CC_PLL4_OUT_EVEN,
 	P_CHIP_SLEEP_CLK,
-	P_CORE_BI_PLL_TEST_SE,
 };
 
 static struct pll_vco fabia_vco[] = {
@@ -291,7 +290,6 @@ static const struct parent_map cam_cc_parent_map_0[] = {
 	{ P_CAM_CC_PLL0_OUT_EVEN, 2 },
 	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
 	{ P_CAM_CC_PLL2_OUT_MAIN, 5 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_0[] = {
@@ -300,7 +298,6 @@ static const struct clk_parent_data cam_cc_parent_data_0[] = {
 	{ .hw = &cam_cc_pll0_out_even.hw },
 	{ .hw = &cam_cc_pll0_out_odd.hw },
 	{ .hw = &cam_cc_pll2_out_main.clkr.hw },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_1[] = {
@@ -310,7 +307,6 @@ static const struct parent_map cam_cc_parent_map_1[] = {
 	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
 	{ P_CAM_CC_PLL1_OUT_EVEN, 4 },
 	{ P_CAM_CC_PLL2_OUT_EARLY, 5 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_1[] = {
@@ -325,13 +321,11 @@ static const struct clk_parent_data cam_cc_parent_data_1[] = {
 static const struct parent_map cam_cc_parent_map_2[] = {
 	{ P_BI_TCXO_MX, 0 },
 	{ P_CAM_CC_PLL2_OUT_AUX, 5 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_2[] = {
 	{ .index = DT_BI_TCXO },
 	{ .hw = &cam_cc_pll2_out_aux.clkr.hw },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_3[] = {
@@ -341,7 +335,6 @@ static const struct parent_map cam_cc_parent_map_3[] = {
 	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
 	{ P_CAM_CC_PLL2_OUT_EARLY, 5 },
 	{ P_CAM_CC_PLL4_OUT_EVEN, 6 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_3[] = {
@@ -356,69 +349,57 @@ static const struct clk_parent_data cam_cc_parent_data_3[] = {
 static const struct parent_map cam_cc_parent_map_4[] = {
 	{ P_BI_TCXO, 0 },
 	{ P_CAM_CC_PLL3_OUT_EVEN, 6 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_4[] = {
 	{ .index = DT_BI_TCXO },
 	{ .hw = &cam_cc_pll3_out_even.hw },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_5[] = {
 	{ P_BI_TCXO, 0 },
 	{ P_CAM_CC_PLL4_OUT_EVEN, 6 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_5[] = {
 	{ .index = DT_BI_TCXO },
 	{ .hw = &cam_cc_pll4_out_even.hw },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_6[] = {
 	{ P_BI_TCXO, 0 },
 	{ P_CAM_CC_PLL1_OUT_EVEN, 4 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_6[] = {
 	{ .index = DT_BI_TCXO },
 	{ .hw = &cam_cc_pll1_out_even.hw },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_7[] = {
 	{ P_CHIP_SLEEP_CLK, 0 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_7[] = {
 	{ .index = DT_CHIP_SLEEP_CLK },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_8[] = {
 	{ P_BI_TCXO, 0 },
 	{ P_CAM_CC_PLL0_OUT_ODD, 3 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_8[] = {
 	{ .index = DT_BI_TCXO },
 	{ .hw = &cam_cc_pll0_out_odd.hw },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct parent_map cam_cc_parent_map_9[] = {
 	{ P_BI_TCXO, 0 },
-	{ P_CORE_BI_PLL_TEST_SE, 7 },
 };
 
 static const struct clk_parent_data cam_cc_parent_data_9[] = {
 	{ .index = DT_BI_TCXO_AO },
-	{ .hw = &core_bi_pll_test_se.clkr.hw },
 };
 
 static const struct freq_tbl ftbl_cam_cc_bps_clk_src[] = {
