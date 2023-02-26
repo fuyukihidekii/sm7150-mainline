@@ -1963,8 +1963,8 @@ static const struct qcom_cc_desc cam_cc_sm7150_desc = {
 	.config = &cam_cc_sm7150_regmap_config,
 	.clks = cam_cc_sm7150_clocks,
 	.num_clks = ARRAY_SIZE(cam_cc_sm7150_clocks),
-	.hwclks = cam_cc_sm7150_hws,
-	.num_hwclks = ARRAY_SIZE(cam_cc_sm7150_hws),
+	.clk_hws = cam_cc_sm7150_hws,
+	.num_clk_hws = ARRAY_SIZE(cam_cc_sm7150_hws),
 };
 
 static const struct of_device_id cam_cc_sm7150_match_table[] = {
