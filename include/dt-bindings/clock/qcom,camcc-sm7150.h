@@ -11,8 +11,8 @@
  * GNU General Public License for more details.
  */
 
-#ifndef _DT_BINDINGS_CLK_QCOM_CAM_CC_SDMMAGPIE_H
-#define _DT_BINDINGS_CLK_QCOM_CAM_CC_SDMMAGPIE_H
+#ifndef _DT_BINDINGS_CLK_QCOM_CAM_CC_SM7150_H
+#define _DT_BINDINGS_CLK_QCOM_CAM_CC_SM7150_H
 
 /* Hardware clocks */
 #define CAM_CC_PLL0_OUT_EVEN					0
