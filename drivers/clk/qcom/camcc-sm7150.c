@@ -2016,17 +2016,7 @@ static struct platform_driver cam_cc_sm7150_driver = {
 	},
 };
 
-static int __init cam_cc_sm7150_init(void)
-{
-	return platform_driver_register(&cam_cc_sm7150_driver);
-}
-subsys_initcall(cam_cc_sm7150_init);
-
-static void __exit cam_cc_sm7150_exit(void)
-{
-	platform_driver_unregister(&cam_cc_sm7150_driver);
-}
-module_exit(cam_cc_sm7150_exit);
+module_platform_driver(cam_cc_sm7150_driver);
 
 MODULE_DESCRIPTION("QTI CAM_CC sm7150 Driver");
 MODULE_LICENSE("GPL v2");
