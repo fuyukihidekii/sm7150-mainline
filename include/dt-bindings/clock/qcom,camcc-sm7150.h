@@ -110,4 +110,12 @@
 #define CAM_CC_SLOW_AHB_CLK_SRC					90
 #define CAM_CC_XO_CLK_SRC					91
 
+/* CAM_CC GDSCRs */
+#define CAM_CC_BPS_GDSC						0
+#define CAM_CC_IFE_0_GDSC					1
+#define CAM_CC_IFE_1_GDSC					2
+#define CAM_CC_IPE_0_GDSC					3
+#define CAM_CC_IPE_1_GDSC					4
+#define CAM_CC_TITAN_TOP_GDSC					5
+
 #endif
