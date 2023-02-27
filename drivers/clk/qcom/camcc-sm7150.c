@@ -28,6 +28,7 @@
 #include "clk-rcg.h"
 #include "clk-regmap.h"
 #include "common.h"
+#include "gdsc.h"
 #include "reset.h"
 
 
@@ -1861,6 +1862,57 @@ static struct clk_branch cam_cc_sleep_clk = {
 	},
 };
 
+static struct gdsc cam_cc_bps_gdsc = {
+	.gdscr = 0x7004,
+	.pd = {
+		.name = "cam_cc_bps_gdsc",
+	},
+	.pwrsts = PWRSTS_OFF_ON,
+	.flags = HW_CTRL,
+};
+
+static struct gdsc cam_cc_ife_0_gdsc = {
+	.gdscr = 0xa004,
+	.pd = {
+		.name = "cam_cc_ife_0_gdsc",
+	},
+	.pwrsts = PWRSTS_OFF_ON,
+};
+
+static struct gdsc cam_cc_ife_1_gdsc = {
+	.gdscr = 0xb004,
+	.pd = {
+		.name = "cam_cc_ife_1_gdsc",
+	},
+	.pwrsts = PWRSTS_OFF_ON,
+};
+
+static struct gdsc cam_cc_ipe_0_gdsc = {
+	.gdscr = 0x8004,
+	.pd = {
+		.name = "cam_cc_ipe_0_gdsc",
+	},
+	.pwrsts = PWRSTS_OFF_ON,
+	.flags = HW_CTRL,
+};
+
+static struct gdsc cam_cc_ipe_1_gdsc = {
+	.gdscr = 0x9004,
+	.pd = {
+		.name = "cam_cc_ipe_1_gdsc",
+	},
+	.pwrsts = PWRSTS_OFF_ON,
+	.flags = HW_CTRL,
+};
+
+static struct gdsc cam_cc_titan_top_gdsc = {
+	.gdscr = 0xc1c4,
+	.pd = {
+		.name = "cam_cc_titan_top_gdsc",
+	},
+	.pwrsts = PWRSTS_OFF_ON,
+};
+
 struct clk_hw *cam_cc_sm7150_hws[] = {
 	[CAM_CC_PLL0_OUT_EVEN] = &cam_cc_pll0_out_even.hw,
 	[CAM_CC_PLL0_OUT_ODD] = &cam_cc_pll0_out_odd.hw,
@@ -1959,6 +2011,15 @@ static struct clk_regmap *cam_cc_sm7150_clocks[] = {
 	[CAM_CC_XO_CLK_SRC] = &cam_cc_xo_clk_src.clkr,
 };
 
+static struct gdsc *cam_cc_sm7150_gdscs[] = {
+	[CAM_CC_BPS_GDSC] = &cam_cc_bps_gdsc,
+	[CAM_CC_IFE_0_GDSC] = &cam_cc_ife_0_gdsc,
+	[CAM_CC_IFE_1_GDSC] = &cam_cc_ife_1_gdsc,
+	[CAM_CC_IPE_0_GDSC] = &cam_cc_ipe_0_gdsc,
+	[CAM_CC_IPE_1_GDSC] = &cam_cc_ipe_1_gdsc,
+	[CAM_CC_TITAN_TOP_GDSC] = &cam_cc_titan_top_gdsc,
+};
+
 static const struct regmap_config cam_cc_sm7150_regmap_config = {
 	.reg_bits	= 32,
 	.reg_stride	= 4,
@@ -1973,6 +2034,8 @@ static const struct qcom_cc_desc cam_cc_sm7150_desc = {
 	.num_clk_hws = ARRAY_SIZE(cam_cc_sm7150_hws),
 	.clks = cam_cc_sm7150_clocks,
 	.num_clks = ARRAY_SIZE(cam_cc_sm7150_clocks),
+	.gdscs = cam_cc_sm7150_gdscs,
+	.num_gdscs = ARRAY_SIZE(cam_cc_sm7150_gdscs),
 };
 
 static const struct of_device_id cam_cc_sm7150_match_table[] = {
