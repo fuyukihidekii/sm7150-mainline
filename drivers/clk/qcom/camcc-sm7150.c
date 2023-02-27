@@ -2010,4 +2010,3 @@ module_platform_driver(cam_cc_sm7150_driver);
 
 MODULE_DESCRIPTION("QTI CAM_CC sm7150 Driver");
 MODULE_LICENSE("GPL v2");
-MODULE_ALIAS("platform:cam_cc-sm7150");
