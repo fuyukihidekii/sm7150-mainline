@@ -1984,13 +1984,10 @@ MODULE_DEVICE_TABLE(of, cam_cc_sm7150_match_table);
 static int cam_cc_sm7150_probe(struct platform_device *pdev)
 {
 	struct regmap *regmap;
-	int ret;
 
 	regmap = qcom_cc_map(pdev, &cam_cc_sm7150_desc);
-	if (IS_ERR(regmap)) {
-		pr_err("Failed to map the cam_cc registers\n");
+	if (IS_ERR(regmap))
 		return PTR_ERR(regmap);
-	}
 
 	clk_fabia_pll_configure(&cam_cc_pll0, regmap, &cam_cc_pll0_config);
 	clk_fabia_pll_configure(&cam_cc_pll1, regmap, &cam_cc_pll1_config);
@@ -1998,14 +1995,7 @@ static int cam_cc_sm7150_probe(struct platform_device *pdev)
 	clk_fabia_pll_configure(&cam_cc_pll3, regmap, &cam_cc_pll3_config);
 	clk_fabia_pll_configure(&cam_cc_pll4, regmap, &cam_cc_pll3_config);
 
-	ret = qcom_cc_really_probe(pdev, &cam_cc_sm7150_desc, regmap);
-	if (ret) {
-		dev_err(&pdev->dev, "Failed to register Camera CC clocks\n");
-		return ret;
-	}
-
-	dev_info(&pdev->dev, "Registered Camera CC clocks\n");
-	return ret;
+	return qcom_cc_really_probe(pdev, &cam_cc_sm7150_desc, regmap);
 }
 
 static struct platform_driver cam_cc_sm7150_driver = {
