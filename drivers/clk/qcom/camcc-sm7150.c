@@ -21,7 +21,7 @@
 #include <linux/regmap.h>
 #include <linux/reset-controller.h>
 
-#include <dt-bindings/clock/qcom,camcc-sm7150.h>
+#include <dt-bindings/clock/qcom,sm7150-camcc.h>
 
 #include "clk-alpha-pll.h"
 #include "clk-branch.h"
@@ -2039,7 +2039,7 @@ static const struct qcom_cc_desc cam_cc_sm7150_desc = {
 };
 
 static const struct of_device_id cam_cc_sm7150_match_table[] = {
-	{ .compatible = "qcom,camcc-sm7150" },
+	{ .compatible = "qcom,sm7150-camcc" },
 	{ }
 };
 MODULE_DEVICE_TABLE(of, cam_cc_sm7150_match_table);
