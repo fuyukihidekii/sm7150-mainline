@@ -24,7 +24,6 @@
 #include "gdsc.h"
 #include "reset.h"
 
-
 enum {
 	DT_BI_TCXO,
 	DT_BI_TCXO_AO,
