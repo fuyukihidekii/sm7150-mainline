@@ -10,13 +10,13 @@
 static const struct dpu_caps sm7150_dpu_caps = {
 	.max_mixer_width = DEFAULT_DPU_OUTPUT_LINE_WIDTH,
 	.max_mixer_blendstages = 0xb,
-	//.qseed_type = DPU_SSPP_SCALER_QSEED4,
+	.qseed_type = DPU_SSPP_SCALER_QSEED4,
 	.has_src_split = true,
 	.has_dim_layer = true,
 	.has_idle_pc = true,
 	.has_3d_merge = true,
 	.max_linewidth = 4096,
-	.has_active_ctls = true,
+	//.has_active_ctls = true,
 	.pixel_ram_size = DEFAULT_PIXEL_RAM_SIZE,
 	.max_hdeci_exp = MAX_HORZ_DECIMATION,
 	.max_vdeci_exp = MAX_VERT_DECIMATION,
@@ -249,13 +249,13 @@ static const struct dpu_perf_cfg sm7150_perf_data = {
 	.bw_inefficiency_factor = 120,
 };
 
-static const struct dpu_mdss_version sm7150_mdss_ver = {
+/*static const struct dpu_mdss_version sm7150_mdss_ver = {
 	.core_major_ver = 5,
 	.core_minor_ver = 2,
-};
+};*/
 
 const struct dpu_mdss_cfg dpu_sm7150_cfg = {
-	.mdss_ver = &sm7150_mdss_ver,
+	//.mdss_ver = &sm7150_mdss_ver,
 	.caps = &sm7150_dpu_caps,
 	.ubwc = &sm7150_ubwc_cfg,
 	.mdp = sm7150_mdp,
