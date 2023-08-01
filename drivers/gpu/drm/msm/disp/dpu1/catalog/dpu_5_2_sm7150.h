@@ -249,13 +249,13 @@ static const struct dpu_perf_cfg sm7150_perf_data = {
 	.bw_inefficiency_factor = 120,
 };
 
-/*static const struct dpu_mdss_version sm7150_mdss_ver = {
+static const struct dpu_mdss_version sm7150_mdss_ver = {
 	.core_major_ver = 5,
 	.core_minor_ver = 2,
-};*/
+};
 
 const struct dpu_mdss_cfg dpu_sm7150_cfg = {
-	//.mdss_ver = &sm7150_mdss_ver,
+	.mdss_ver = &sm7150_mdss_ver,
 	.caps = &sm7150_dpu_caps,
 	.ubwc = &sm7150_ubwc_cfg,
 	.mdp = sm7150_mdp,
