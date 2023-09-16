@@ -55,6 +55,10 @@
 	};
 };
 
+&dispcc {
+	status = "okay";
+};
+
 &i2c1 {
 	clock-frequency = <100000>;
 	status = "okay";
@@ -128,6 +132,18 @@
 
 &ipa {
 	firmware-name = "qcom/sm7150/surya/ipa_fws.mbn";
+	status = "okay";
+};
+
+&mdss {
+	status = "okay";
+};
+
+&mdss_dsi0 {
+	status = "okay";
+};
+
+&mdss_dsi0_phy {
 	status = "okay";
 };
 
