@@ -5,7 +5,31 @@
 
 /dts-v1/;
 
+#include <dt-bindings/arm/qcom,ids.h>
+#include <dt-bindings/firmware/qcom,scm.h>
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/leds/common.h>
+#include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator.h>
+
 #include "sm7150.dtsi"
+#include "pm6150.dtsi"
+#include "pm8150l.dtsi"
+
+/*
+ * Delete following upstream (sm7150.dtsi) reserved
+ * memory mappings which are different for this device.
+ */
+
+/delete-node/ &xbl_mem;
+/delete-node/ &aop_mem;
+/delete-node/ &tz_memmpss_mem;
+/delete-node/ &mpss_mem;
+/delete-node/ &venus_mem;
+/delete-node/ &adsp_mem;
+/delete-node/ &ipa_gsi_mem;
+/delete-node/ &gpu_mem;
+/delete-node/ &qseecom_mem;
 
 / {
 	model = "motorola moto g(60)";
@@ -29,9 +53,189 @@
 		};
 };
 
-reserved-memory {
+reserved-memory: reserved-memory {
+		#address-cells = <0x02>;
+		#size-cells = <0x02>;
+		ranges;
+
+		hyp_region@85700000 {
+			reg = <0x00 0x85700000 0x00 0x600000>;
+			no-map;
+		};
+
+		xbl_aop_mem@85e00000 {
+			reg = <0x00 0x85e00000 0x00 0x1ff000>;
+			no-map;
+		};
+
+		sec_apps_region@85fff000 {
+			reg = <0x00 0x85fff000 0x00 0x1000>;
+			no-map;
+		};
+
+		smem@86000000 {
+			reg = <0x00 0x86000000 0x00 0x200000>;
+			no-map;
+		};
+
+		removed_region@86200000 {
+			reg = <0x00 0x86200000 0x00 0x4100000>;
+			no-map;
+		};
+
+		camera_region@8ab00000 {
+			reg = <0x00 0x8ab00000 0x00 0x500000>;
+			no-map;
+		};
+
+		modem_region@8b000000 {
+			reg = <0x00 0x8b000000 0x00 0x8400000>;
+			no-map;
+		};
+
+		pil_video_region@93400000 {
+			reg = <0x00 0x93400000 0x00 0x500000>;
+			no-map;
+		};
+
+		cdsp_regions@93900000 {
+			reg = <0x00 0x93900000 0x00 0x1e00000>;
+			no-map;
+		};
+
+		pil_adsp_region@95700000 {
+			reg = <0x00 0x95700000 0x00 0x1e00000>;
+			no-map;
+		};
+
+		wlan_msa_region@97500000 {
+			reg = <0x00 0x97500000 0x00 0x180000>;
+			no-map;
+		};
+
+		npu_region@97680000 {
+			reg = <0x00 0x97680000 0x00 0x80000>;
+			no-map;
+		};
+
+		ipa_fw_region@97700000 {
+			reg = <0x00 0x97700000 0x00 0x10000>;
+			no-map;
+		};
+
+		ipa_gsi_region@97710000 {
+			reg = <0x00 0x97710000 0x00 0x5000>;
+			no-map;
+		};
+
+		gpu_region@97715000 {
+			reg = <0x00 0x97715000 0x00 0x2000>;
+			no-map;
+		};
+
+		qseecom_region@9e400000 {
+			reg = <0x00 0x9e400000 0x00 0x1400000>;
+			no-map;
+		};
+
 		framebuffer_region@9c000000 {
 			reg = <0x0 0x9c000000 0x0 (1080 * 2460 * 4)>;
 			no-map;
 		};
-};
+
+		adsp_region {
+			alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+			reusable;
+			alignment = <0x00 0x400000>;
+			size = <0x00 0xc00000>;
+			phandle = <0x93>;
+		};
+
+		cdsp_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+			reusable;
+			alignment = <0x00 0x400000>;
+			size = <0x00 0x400000>;
+			phandle = <0x1a8>;
+		};
+
+		qseecom_ta_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+			reusable;
+			alignment = <0x00 0x400000>;
+			size = <0x00 0x1000000>;
+			phandle = <0x1c5>;
+		};
+
+		sp_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+			reusable;
+			alignment = <0x00 0x400000>;
+			size = <0x00 0x800000>;
+			phandle = <0x1c6>;
+		};
+
+		secure_display_region {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+			reusable;
+			alignment = <0x00 0x400000>;
+			size = <0x00 0x8c00000>;
+			phandle = <0x1c7>;
+		};
+
+		disp_rdump_region@9c000000 {
+			reg = <0x00 0x9c000000 0x00 0x1800000>;
+			label = "disp_rdump_region";
+			phandle = <0x4cc>;
+		};
+
+		dfps_data_region@9d700000 {
+			reg = <0x00 0x9d700000 0x00 0x100000>;
+			no-map;
+		};
+
+		mem_dump_region {
+			compatible = "shared-dma-pool";
+			reusable;
+			size = <0x00 0x2400000>;
+			phandle = <0x53>;
+		};
+
+		linux,cma {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0x00 0x00 0x00 0xffffffff>;
+			reusable;
+			alignment = <0x00 0x400000>;
+			size = <0x00 0x2000000>;
+			linux,cma-default;
+		};
+
+		ramoops_mem {
+			compatible = "ramoops";
+			no-map;
+			reg = <0x00 0xaf000000 0x00 0xbf800>;
+			console-size = <0x40000>;
+			pmsg-size = <0x40000>;
+			record-size = <0x3f800>;
+			no-dump-oops;
+		};
+
+		wdog_cpuctx_region {
+			reg = <0x00 0xaefd2000 0x00 0x2e000>;
+			no-map;
+		};
+
+		tzlog_dump_mem_region {
+			reg = <0x00 0xaefa2000 0x00 0x30000>;
+			no-map;
+		};
+
+		mmi_annotate_mem_region {
+			reg = <0x00 0xaefa1800 0x00 0x800>;
+			no-map;
+		};
+	};
