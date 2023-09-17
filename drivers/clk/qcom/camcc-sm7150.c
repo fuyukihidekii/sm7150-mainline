@@ -62,6 +62,7 @@ static struct clk_alpha_pll cam_cc_pll0 = {
 	.offset = 0x0,
 	.vco_table = fabia_vco,
 	.num_vco = ARRAY_SIZE(fabia_vco),
+	.regs = clk_alpha_pll_regs[CLK_ALPHA_PLL_TYPE_FABIA],
 	.clkr = {
 		.hw.init = &(struct clk_init_data){
 			.name = "cam_cc_pll0",
@@ -113,6 +114,7 @@ static struct clk_alpha_pll cam_cc_pll1 = {
 	.offset = 0x1000,
 	.vco_table = fabia_vco,
 	.num_vco = ARRAY_SIZE(fabia_vco),
+	.regs = clk_alpha_pll_regs[CLK_ALPHA_PLL_TYPE_FABIA],
 	.clkr = {
 		.hw.init = &(struct clk_init_data){
 			.name = "cam_cc_pll1",
@@ -153,6 +155,7 @@ static const struct alpha_pll_config cam_cc_pll2_config = {
 
 static struct clk_alpha_pll cam_cc_pll2 = {
 	.offset = 0x2000,
+	.regs = clk_alpha_pll_regs[CLK_ALPHA_PLL_TYPE_FABIA],
 	.clkr = {
 		.hw.init = &(struct clk_init_data){
 			.name = "cam_cc_pll2",
@@ -182,6 +185,7 @@ static struct clk_alpha_pll_postdiv cam_cc_pll2_out_aux = {
 	.offset = 0x2000,
 	.post_div_shift = 8,
 	.width = 2,
+	.regs = clk_alpha_pll_regs[CLK_ALPHA_PLL_TYPE_FABIA],
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_pll2_out_aux",
 		.parent_hws = (const struct clk_hw*[]) {
@@ -197,6 +201,7 @@ static struct clk_alpha_pll_postdiv cam_cc_pll2_out_main = {
 	.offset = 0x2000,
 	.post_div_shift = 8,
 	.width = 2,
+	.regs = clk_alpha_pll_regs[CLK_ALPHA_PLL_TYPE_FABIA],
 	.clkr.hw.init = &(struct clk_init_data){
 		.name = "cam_cc_pll2_out_main",
 		.parent_hws = (const struct clk_hw*[]) {
@@ -221,6 +226,7 @@ static struct clk_alpha_pll cam_cc_pll3 = {
 	.offset = 0x3000,
 	.vco_table = fabia_vco,
 	.num_vco = ARRAY_SIZE(fabia_vco),
+	.regs = clk_alpha_pll_regs[CLK_ALPHA_PLL_TYPE_FABIA],
 	.clkr = {
 		.hw.init = &(struct clk_init_data){
 			.name = "cam_cc_pll3",
@@ -251,6 +257,7 @@ static struct clk_alpha_pll cam_cc_pll4 = {
 	.offset = 0x4000,
 	.vco_table = fabia_vco,
 	.num_vco = ARRAY_SIZE(fabia_vco),
+	.regs = clk_alpha_pll_regs[CLK_ALPHA_PLL_TYPE_FABIA],
 	.clkr = {
 		.hw.init = &(struct clk_init_data){
 			.name = "cam_cc_pll4",
@@ -459,7 +466,7 @@ static struct clk_rcg2 cam_cc_cci_0_clk_src = {
 		.name = "cam_cc_cci_0_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -473,7 +480,7 @@ static struct clk_rcg2 cam_cc_cci_1_clk_src = {
 		.name = "cam_cc_cci_1_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -495,7 +502,7 @@ static struct clk_rcg2 cam_cc_cphy_rx_clk_src = {
 		.name = "cam_cc_cphy_rx_clk_src",
 		.parent_data = cam_cc_parent_data_1,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_1),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -515,7 +522,7 @@ static struct clk_rcg2 cam_cc_csi0phytimer_clk_src = {
 		.name = "cam_cc_csi0phytimer_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -529,7 +536,7 @@ static struct clk_rcg2 cam_cc_csi1phytimer_clk_src = {
 		.name = "cam_cc_csi1phytimer_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -543,7 +550,7 @@ static struct clk_rcg2 cam_cc_csi2phytimer_clk_src = {
 		.name = "cam_cc_csi2phytimer_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -557,7 +564,7 @@ static struct clk_rcg2 cam_cc_csi3phytimer_clk_src = {
 		.name = "cam_cc_csi3phytimer_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -581,7 +588,7 @@ static struct clk_rcg2 cam_cc_fast_ahb_clk_src = {
 		.name = "cam_cc_fast_ahb_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -735,7 +742,7 @@ static struct clk_rcg2 cam_cc_ife_lite_clk_src = {
 		.name = "cam_cc_ife_lite_clk_src",
 		.parent_data = cam_cc_parent_data_0,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_0),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -832,7 +839,7 @@ static struct clk_rcg2 cam_cc_mclk0_clk_src = {
 		.name = "cam_cc_mclk0_clk_src",
 		.parent_data = cam_cc_parent_data_2,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_2),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -846,7 +853,7 @@ static struct clk_rcg2 cam_cc_mclk1_clk_src = {
 		.name = "cam_cc_mclk1_clk_src",
 		.parent_data = cam_cc_parent_data_2,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_2),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -860,7 +867,7 @@ static struct clk_rcg2 cam_cc_mclk2_clk_src = {
 		.name = "cam_cc_mclk2_clk_src",
 		.parent_data = cam_cc_parent_data_2,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_2),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -874,7 +881,7 @@ static struct clk_rcg2 cam_cc_mclk3_clk_src = {
 		.name = "cam_cc_mclk3_clk_src",
 		.parent_data = cam_cc_parent_data_2,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_2),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -893,7 +900,7 @@ static struct clk_rcg2 cam_cc_sleep_clk_src = {
 		.name = "cam_cc_sleep_clk_src",
 		.parent_data = cam_cc_parent_data_7,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_7),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
@@ -932,7 +939,7 @@ static struct clk_rcg2 cam_cc_xo_clk_src = {
 		.name = "cam_cc_xo_clk_src",
 		.parent_data = cam_cc_parent_data_9,
 		.num_parents = ARRAY_SIZE(cam_cc_parent_data_9),
-		.ops = &clk_rcg2_shared_ops,
+		.ops = &clk_rcg2_ops,
 	},
 };
 
