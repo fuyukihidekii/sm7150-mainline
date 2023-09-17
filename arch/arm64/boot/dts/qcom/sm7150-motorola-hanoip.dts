@@ -11,4 +11,27 @@
 	model = "motorola moto g(60)";
 	compatible = "motorola,hanoip", "qcom,sm7150";
 	chassis-type = "handset";
-}
+
+	qcom,msm-id = <0x16d 0x00>;
+	qcom,board-id = <0x4c 0xb200>;
+
+	chosen {
+			#address-cells = <0x02>;
+			#size-cells = <0x02>;
+			ranges;
+			framebuffer@9c000000 {
+					compatible = "simple-framebuffer";
+					reg = <0x00 0x9c000000 0x00 (1080 * 2460 * 4)>;
+					width = <1080>;
+					height = <2460>;
+					stride = <(1080 * 4)>;
+					format = "a8r8g8b8";
+		};
+};
+
+reserved-memory {
+		framebuffer_region@9c000000 {
+			reg = <0x0 0x9c000000 0x0 (1080 * 2460 * 4)>;
+			no-map;
+		};
+};
