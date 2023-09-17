@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/*
+ * Copyright (c) 2023, 豪 樹 冬 木 <fuyukihidekii@gmail.com>
+ */
+
+/dts-v1/;
+
+#include "sm7150.dtsi"
+
+/ {
+	model = "motorola moto g(60)";
+	compatible = "motorola,hanoip", "qcom,sm7150";
+	chassis-type = "handset";
+}
